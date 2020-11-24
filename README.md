@@ -1,4 +1,6 @@
-### Hi there 👋
+### Welcome 👋
+
+<img align="center" alt="Robs Github Stats" src="https://github-readme-stats.vercel.app/api?username=robertmarks&show_icons=true&hide_border=true&icon_color=0505ff&title_color=0505ff&count_private=true&include_all_commits=true"/>
 
 <!--
 **robertmarks/robertmarks** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
