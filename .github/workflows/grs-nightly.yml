@@ -36,21 +36,10 @@ jobs:
           path: profile/top-langs.svg
           token: ${{ secrets.GRS_TOKEN || secrets.GITHUB_TOKEN }}
 
-      - name: Generate lines changed card SVG
-        uses: lowlighter/metrics@latest
-        with:
-          filename: profile/lines.svg
-          token: ${{ secrets.GRS_TOKEN || github.token }}
-          user: robertmarks
-          template: classic
-          base: repositories
-          plugin_lines: yes
-          plugin_lines_delay: 30
-
       - name: Commit updated SVG
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile/stats.svg profile/top-langs.svg profile/lines.svg
+          git add profile/stats.svg profile/top-langs.svg
           git commit -m "chore: refresh profile stats" || exit 0
           git push
