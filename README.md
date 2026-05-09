@@ -15,8 +15,9 @@ I build software, mostly practical things that need to work well over time.
 ## Stats
 
 [![GitHub snapshot](./profile/stats.svg)](https://github.com/anuraghazra/github-readme-stats)
+[![Top languages](./profile/top-langs.svg)](https://github.com/anuraghazra/github-readme-stats)
+[![Lines changed](./profile/lines.svg)](https://github.com/lowlighter/metrics)
 
-<sub>Kept intentionally lightweight. The repositories tab has the full picture.</sub>
 
 ## Connect
 - GitHub: https://github.com/robertmarks

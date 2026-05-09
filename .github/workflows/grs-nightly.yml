@@ -24,14 +24,33 @@ jobs:
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: stats
-          options: username=robertmarks&theme=tokyonight&show_icons=true&hide_border=true&include_all_commits=true&rank_icon=github&custom_title=GitHub%20Snapshot&hide=issues&show=prs_merged,prs_merged_percentage
+          options: username=robertmarks&theme=transparent&show_icons=true&hide_border=true&include_all_commits=true&rank_icon=github&custom_title=GitHub%20Snapshot&hide=issues,stars&show=prs_merged
           path: profile/stats.svg
           token: ${{ secrets.GRS_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Generate top languages card SVG
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: top-langs
+          options: username=robertmarks&theme=transparent&hide_border=true&layout=compact&langs_count=8
+          path: profile/top-langs.svg
+          token: ${{ secrets.GRS_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Generate lines changed card SVG
+        uses: lowlighter/metrics@latest
+        with:
+          filename: profile/lines.svg
+          token: ${{ secrets.GRS_TOKEN || github.token }}
+          user: robertmarks
+          template: classic
+          base: repositories
+          plugin_lines: yes
+          plugin_lines_delay: 30
 
       - name: Commit updated SVG
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile/stats.svg
+          git add profile/stats.svg profile/top-langs.svg profile/lines.svg
           git commit -m "chore: refresh profile stats" || exit 0
           git push
