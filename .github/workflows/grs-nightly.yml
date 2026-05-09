@@ -1,6 +1,10 @@
 name: Refresh Profile Stats
 
 on:
+  push:
+    branches:
+      - main
+      - master
   schedule:
     - cron: "17 1 * * *"
   workflow_dispatch:
