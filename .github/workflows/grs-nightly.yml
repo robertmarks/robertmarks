@@ -47,6 +47,131 @@ jobs:
           SILENT: "true"
           MAX_RETRIES: "5"
 
+      - name: Install cloc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cloc
+
+      - name: Generate LOC language cards
+        env:
+          ACCESS_TOKEN: ${{ secrets.GRS_TOKEN }}
+          GITHUB_USER: robertmarks
+          MAX_REPOS: "60"
+          MAX_LANGS: "8"
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import shutil
+          import subprocess
+          import tempfile
+          import urllib.parse
+          import urllib.request
+          from collections import defaultdict
+
+          token = os.environ["ACCESS_TOKEN"]
+          user = os.environ["GITHUB_USER"]
+          max_repos = int(os.environ.get("MAX_REPOS", "60"))
+          max_langs = int(os.environ.get("MAX_LANGS", "8"))
+
+          repos = []
+          page = 1
+          while len(repos) < max_repos:
+            url = f"https://api.github.com/user/repos?per_page=100&page={page}&affiliation=owner,collaborator,organization_member"
+            req = urllib.request.Request(url)
+            req.add_header("Authorization", f"Bearer {token}")
+            req.add_header("Accept", "application/vnd.github+json")
+            with urllib.request.urlopen(req) as resp:
+              batch = json.load(resp)
+            if not batch:
+              break
+            repos.extend(batch)
+            page += 1
+
+          filtered = []
+          for repo in repos:
+            if repo.get("archived"):
+              continue
+            if repo.get("disabled"):
+              continue
+            if repo.get("fork"):
+              continue
+            if repo.get("size", 0) == 0:
+              continue
+            filtered.append(repo)
+          filtered = filtered[:max_repos]
+
+          totals = defaultdict(int)
+          workdir = tempfile.mkdtemp(prefix="repos-")
+          try:
+            for repo in filtered:
+              full_name = repo["full_name"]
+              safe_name = full_name.replace("/", "__")
+              repo_dir = os.path.join(workdir, safe_name)
+              clone_url = f"https://x-access-token:{urllib.parse.quote(token, safe='')}@github.com/{full_name}.git"
+              clone = subprocess.run(
+                ["git", "clone", "--depth", "1", clone_url, repo_dir],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                check=False,
+              )
+              if clone.returncode != 0:
+                continue
+              cloc = subprocess.run(
+                ["cloc", "--json", "--quiet", repo_dir],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.DEVNULL,
+                text=True,
+                check=False,
+              )
+              if cloc.returncode != 0:
+                continue
+              try:
+                data = json.loads(cloc.stdout)
+              except json.JSONDecodeError:
+                continue
+              for lang, stats in data.items():
+                if lang in ("header", "SUM"):
+                  continue
+                code = int(stats.get("code", 0))
+                if code > 0:
+                  totals[lang] += code
+          finally:
+            shutil.rmtree(workdir, ignore_errors=True)
+
+          sorted_langs = sorted(totals.items(), key=lambda x: x[1], reverse=True)[:max_langs]
+          total_code = sum(v for _, v in sorted_langs) or 1
+
+          def make_svg(path, bg, fg, muted, bar):
+            width = 495
+            header_h = 52
+            row_h = 24
+            pad = 20
+            height = header_h + pad + len(sorted_langs) * row_h + pad
+            lines = [
+              f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="LOC by language">',
+              f'<rect width="{width}" height="{height}" fill="{bg}" rx="10" ry="10"/>',
+              f'<text x="{pad}" y="32" fill="{fg}" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="18" font-weight="600">LOC by Language</text>',
+            ]
+            y = header_h + 8
+            bar_x = 210
+            bar_w = 220
+            for lang, code in sorted_langs:
+              pct = code / total_code
+              fill_w = max(2, int(bar_w * pct))
+              lines.append(f'<text x="{pad}" y="{y}" fill="{fg}" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13">{lang}</text>')
+              lines.append(f'<rect x="{bar_x}" y="{y-11}" width="{bar_w}" height="10" fill="{muted}" rx="5" ry="5"/>')
+              lines.append(f'<rect x="{bar_x}" y="{y-11}" width="{fill_w}" height="10" fill="{bar}" rx="5" ry="5"/>')
+              lines.append(f'<text x="{bar_x + bar_w + 8}" y="{y}" fill="{fg}" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12">{code:,}</text>')
+              y += row_h
+            lines.append('</svg>')
+            with open(path, "w", encoding="utf-8") as f:
+              f.write("\n".join(lines))
+
+          make_svg("languages-loc-dark.svg", "#0d1117", "#e6edf3", "#30363d", "#58a6ff")
+          make_svg("languages-loc-light.svg", "#ffffff", "#24292f", "#d8dee4", "#0969da")
+          PY
+
       - name: Commit generated files
         run: |
           git add .
