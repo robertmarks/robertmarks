@@ -21,8 +21,10 @@ I build production platforms: practical, durable systems that scale to millions 
 
 ## Stats
 
-[![GitHub snapshot](./profile/stats.svg)](https://github.com/anuraghazra/github-readme-stats)
-[![Top languages](./profile/top-langs.svg)](https://github.com/anuraghazra/github-readme-stats)
+![](https://github.com/robertmarks/robertmarks/blob/generated/overview.svg#gh-dark-mode-only)
+![](https://github.com/robertmarks/robertmarks/blob/generated/overview.svg#gh-light-mode-only)
+![](https://github.com/robertmarks/robertmarks/blob/generated/languages.svg#gh-dark-mode-only)
+![](https://github.com/robertmarks/robertmarks/blob/generated/languages.svg#gh-light-mode-only)
 
 
 ## Connect

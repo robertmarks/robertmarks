@@ -12,6 +12,10 @@ on:
 permissions:
   contents: write
 
+defaults:
+  run:
+    shell: bash -euxo pipefail {0}
+
 jobs:
   refresh-stats:
     runs-on: ubuntu-latest
@@ -20,26 +24,35 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Generate GRS card SVG
-        uses: readme-tools/github-readme-stats-action@v1
+      - name: Set up Zig
+        uses: mlugg/setup-zig@v2
         with:
-          card: stats
-          options: username=robertmarks&theme=transparent&show_icons=true&hide_border=true&include_all_commits=true&rank_icon=github&custom_title=GitHub%20Snapshot&hide=issues,stars&show=prs_merged
-          path: profile/stats.svg
-          token: ${{ secrets.GRS_TOKEN }}
+          version: 0.16.0
 
-      - name: Generate top languages card SVG
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: top-langs
-          options: username=robertmarks&theme=transparent&hide_border=true&layout=compact&langs_count=8
-          path: profile/top-langs.svg
-          token: ${{ secrets.GRS_TOKEN }}
-
-      - name: Commit updated SVG
+      - name: Build github-stats
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile/stats.svg profile/top-langs.svg
-          git commit -m "chore: refresh profile stats" || exit 0
-          git push
+          zig build
+
+      - name: Check out generated branch
+        run: |
+          git config --global user.name "github-stats[bot]"
+          git config --global user.email "github-stats[bot]@users.noreply.github.com"
+          git pull
+          git checkout generated || git checkout -b generated
+
+      - name: Generate stats images
+        run: |
+          ./zig-out/bin/github-stats
+        env:
+          ACCESS_TOKEN: ${{ secrets.GRS_TOKEN }}
+          EXCLUDE_REPOS: ${{ secrets.EXCLUDE_REPOS }}
+          EXCLUDE_LANGS: ${{ secrets.EXCLUDE_LANGS }}
+          EXCLUDE_PRIVATE: "false"
+          SILENT: "true"
+          MAX_RETRIES: "5"
+
+      - name: Commit generated files
+        run: |
+          git add .
+          git commit -m "chore: refresh profile stats" || true
+          git push --set-upstream origin generated
