@@ -1,16 +1,23 @@
 # Robert Marks
 
-I build software, mostly practical things that need to work well over time.
+I build production platforms: practical, durable systems that scale to millions of users and requests.
 
 ## About
-- I like clear systems, small tools, and calm engineering
-- I work across product, infrastructure, and AI-assisted workflows
-- I prefer steady progress over noisy reinvention
+- Building practical Azure platforms for real production workloads
+- Designing systems to be easy to operate, easy to change, and built to last
+- Prioritizing long-term maintainability over short-term novelty
+- Balancing uptime, cost-awareness, and developer experience in equal measure
 
 ## Right Now
-- Improving day-to-day developer workflows
-- Exploring where AI helps in practice, not just demos
-- Keeping things simple enough to maintain
+- Building Azure platforms for clients through pragmatic architecture, automation, and platform guardrails
+- Applying repeatable delivery patterns, strong observability, and operational discipline
+- Reducing operational complexity through better defaults and automation
+
+## At a Glance
+- Building and operating platforms designed to handle millions of requests with production-grade reliability
+
+## Current Focus
+- Azure, platform automation, observability, AI-assisted delivery
 
 ## Stats
 
@@ -19,9 +26,9 @@ I build software, mostly practical things that need to work well over time.
 
 
 ## Connect
-- GitHub: https://github.com/robertmarks
-- LinkedIn: Add your link
-- Website: Add your link
+- [LinkedIn](https://www.linkedin.com/in/marksrobert/) - feel free to connect
+- [My Site](https://robertmarks.cloud/) - occasional updates
+- [GitHub](https://github.com/robertmarks)
 
 ---
 
