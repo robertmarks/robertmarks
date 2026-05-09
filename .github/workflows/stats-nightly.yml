@@ -26,19 +26,23 @@ jobs:
 
       - name: Download github-stats binary
         run: |
-          curl -L -o github-stats https://github.com/jstrieb/github-stats/releases/latest/download/github-stats_x86_64-linux
-          chmod +x github-stats
+          curl -L -o /tmp/github-stats https://github.com/jstrieb/github-stats/releases/latest/download/github-stats_x86_64-linux
+          chmod +x /tmp/github-stats
 
       - name: Check out generated branch
         run: |
           git config --global user.name "github-stats[bot]"
           git config --global user.email "github-stats[bot]@users.noreply.github.com"
-          git pull
-          git checkout generated || git checkout -b generated
+          git fetch origin generated || true
+          if git ls-remote --exit-code --heads origin generated >/dev/null 2>&1; then
+            git checkout -B generated origin/generated
+          else
+            git checkout -b generated
+          fi
 
       - name: Generate stats images
         run: |
-          ./github-stats
+          /tmp/github-stats
         env:
           ACCESS_TOKEN: ${{ secrets.GRS_TOKEN }}
           EXCLUDE_REPOS: ${{ secrets.EXCLUDE_REPOS }}
@@ -174,6 +178,9 @@ jobs:
 
       - name: Commit generated files
         run: |
-          git add .
-          git commit -m "chore: refresh profile stats" || true
+          git add overview.svg languages.svg languages-loc-dark.svg languages-loc-light.svg
+          git commit -m "chore: refresh profile stats" || exit 0
+          if git ls-remote --exit-code --heads origin generated >/dev/null 2>&1; then
+            git pull --rebase origin generated
+          fi
           git push --set-upstream origin generated
