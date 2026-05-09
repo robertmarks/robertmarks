@@ -1,4 +1,4 @@
-# Robert Marks
+# Rob Marks
 
 I build production platforms: practical, durable systems that scale to millions of users and requests.
 
@@ -23,8 +23,7 @@ I build production platforms: practical, durable systems that scale to millions 
 
 ![](https://github.com/robertmarks/robertmarks/blob/generated/overview.svg#gh-dark-mode-only)
 ![](https://github.com/robertmarks/robertmarks/blob/generated/overview.svg#gh-light-mode-only)
-![](https://github.com/robertmarks/robertmarks/blob/generated/languages-loc-dark.svg#gh-dark-mode-only)
-![](https://github.com/robertmarks/robertmarks/blob/generated/languages-loc-light.svg#gh-light-mode-only)
+![](https://github.com/robertmarks/robertmarks/blob/generated/profile/top-langs.svg)
 
 
 ## Connect

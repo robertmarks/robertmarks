@@ -47,9 +47,17 @@ jobs:
           SILENT: "true"
           MAX_RETRIES: "5"
 
+      - name: Generate LOC stats card SVG
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: top-langs
+          options: username=robertmarks&theme=transparent&hide_border=true&layout=compact&langs_count=8
+          path: profile/top-langs.svg
+          token: ${{ secrets.GRS_TOKEN }}
+
       - name: Commit generated files
         run: |
-          git add overview.svg languages.svg
+          git add overview.svg languages.svg profile/top-langs.svg
           git commit -m "chore: refresh profile stats" || exit 0
           if git ls-remote --exit-code --heads origin generated >/dev/null 2>&1; then
             git pull --rebase origin generated
