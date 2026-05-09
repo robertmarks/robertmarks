@@ -21,9 +21,9 @@ I build production platforms: practical, durable systems that scale to millions 
 
 ## Stats
 
-![](https://github.com/robertmarks/robertmarks/blob/generated/overview.svg#gh-dark-mode-only)
-![](https://github.com/robertmarks/robertmarks/blob/generated/overview.svg#gh-light-mode-only)
-![](https://github.com/robertmarks/robertmarks/blob/generated/profile/top-langs.svg)
+![](./overview.svg#gh-dark-mode-only)
+![](./overview.svg#gh-light-mode-only)
+![](./profile/top-langs.svg)
 
 
 ## Connect

@@ -25,16 +25,10 @@ jobs:
           curl -L -o /tmp/github-stats https://github.com/jstrieb/github-stats/releases/latest/download/github-stats_x86_64-linux
           chmod +x /tmp/github-stats
 
-      - name: Check out generated branch
+      - name: Configure git identity
         run: |
           git config --global user.name "Robert Marks"
           git config --global user.email "36484284+robertmarks@users.noreply.github.com"
-          git fetch origin generated || true
-          if git ls-remote --exit-code --heads origin generated >/dev/null 2>&1; then
-            git checkout -B generated origin/generated
-          else
-            git checkout -b generated
-          fi
 
       - name: Generate stats images
         run: |
@@ -59,7 +53,5 @@ jobs:
         run: |
           git add overview.svg languages.svg profile/top-langs.svg
           git commit -m "chore: refresh profile stats" || exit 0
-          if git ls-remote --exit-code --heads origin generated >/dev/null 2>&1; then
-            git pull --rebase origin generated
-          fi
-          git push --set-upstream origin generated
+          git pull --rebase origin main
+          git push origin main
