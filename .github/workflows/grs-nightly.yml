@@ -24,14 +24,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Zig
-        uses: mlugg/setup-zig@v2
-        with:
-          version: 0.16.0
-
-      - name: Build github-stats
+      - name: Download github-stats binary
         run: |
-          zig build
+          curl -L -o github-stats https://github.com/jstrieb/github-stats/releases/latest/download/github-stats_x86_64-linux
+          chmod +x github-stats
 
       - name: Check out generated branch
         run: |
@@ -42,7 +38,7 @@ jobs:
 
       - name: Generate stats images
         run: |
-          ./zig-out/bin/github-stats
+          ./github-stats
         env:
           ACCESS_TOKEN: ${{ secrets.GRS_TOKEN }}
           EXCLUDE_REPOS: ${{ secrets.EXCLUDE_REPOS }}
