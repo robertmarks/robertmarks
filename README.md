@@ -23,8 +23,7 @@ I build production platforms: practical, durable systems that scale to millions 
 
 ![](https://github.com/robertmarks/robertmarks/blob/generated/overview.svg#gh-dark-mode-only)
 ![](https://github.com/robertmarks/robertmarks/blob/generated/overview.svg#gh-light-mode-only)
-![](https://github.com/robertmarks/robertmarks/blob/generated/languages-loc-dark.svg#gh-dark-mode-only)
-![](https://github.com/robertmarks/robertmarks/blob/generated/languages-loc-light.svg#gh-light-mode-only)
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=robertmarks&theme=transparent&hide_border=true&layout=compact&langs_count=8)
 
 
 ## Connect
