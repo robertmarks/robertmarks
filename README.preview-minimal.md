@@ -14,9 +14,9 @@ I build software, mostly practical things that need to work well over time.
 
 ## Stats
 
-[![GitHub snapshot](./profile/stats.svg)](https://github.com/anuraghazra/github-readme-stats)
+[![GitHub snapshot](https://github-readme-stats.vercel.app/api?username=robertmarks&theme=tokyonight&show_icons=true&hide_border=true&include_all_commits=true&rank_icon=github&custom_title=GitHub%20Snapshot&hide=issues&show=prs_merged,prs_merged_percentage)](https://github.com/anuraghazra/github-readme-stats)
 
-<sub>Kept intentionally lightweight. The repositories tab has the full picture.</sub>
+<sub>One block is enough. If you want details, the repos tab is the source of truth.</sub>
 
 ## Connect
 - GitHub: https://github.com/robertmarks
