@@ -41,11 +41,17 @@ jobs:
           SILENT: "true"
           MAX_RETRIES: "5"
 
+      - name: Strip baked border from overview.svg
+        run: |
+          # jstrieb/github-stats compiles the card border into the binary's
+          # template (no config flag), so remove it post-generation.
+          sed -i 's/stroke: rgb(225, 228, 232);/stroke: none;/' overview.svg
+
       - name: Generate LOC stats card SVG
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: top-langs
-          options: username=robertmarks&theme=transparent&hide_border=false&border_color=E1E4E8&layout=compact&langs_count=8
+          options: username=robertmarks&theme=transparent&hide_border=true&layout=compact&langs_count=8
           path: profile/top-langs.svg
           token: ${{ secrets.GRS_TOKEN }}
 

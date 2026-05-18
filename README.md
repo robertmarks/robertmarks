@@ -15,6 +15,7 @@ Technical Architect who designs, builds, and operates durable Azure platforms th
 - Applying repeatable delivery patterns, strong observability, and operational discipline
 - Reducing operational complexity through better defaults and automation
 - Focused on Azure, platform automation, observability, and AI-assisted delivery
+- Lately, spending more time closer to the data
 
 ## Stats
 
@@ -25,9 +26,9 @@ Technical Architect who designs, builds, and operates durable Azure platforms th
 </p>
 <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=robertmarks&area=true&theme=github-dark&border_color=E1E4E8&radius=6">
-    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=robertmarks&area=true&theme=github-light&line=1F6FEB&point=58A6FF&area_color=1F6FEB&border_color=E1E4E8&radius=6">
-    <img alt="Rob's GitHub Activity Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=robertmarks&area=true&theme=github-light&line=1F6FEB&point=58A6FF&area_color=1F6FEB&border_color=E1E4E8&radius=6">
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=robertmarks&area=true&theme=github-dark&hide_border=true">
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=robertmarks&area=true&theme=github-light&line=1F6FEB&point=58A6FF&area_color=1F6FEB&hide_border=true">
+    <img alt="Rob's GitHub Activity Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=robertmarks&area=true&theme=github-light&line=1F6FEB&point=58A6FF&area_color=1F6FEB&hide_border=true">
   </picture>
 </a>
 
