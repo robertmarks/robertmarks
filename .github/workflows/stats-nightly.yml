@@ -45,7 +45,7 @@ jobs:
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: top-langs
-          options: username=robertmarks&theme=transparent&hide_border=false&layout=compact&langs_count=8
+          options: username=robertmarks&theme=transparent&hide_border=false&border_color=E1E4E8&layout=compact&langs_count=8
           path: profile/top-langs.svg
           token: ${{ secrets.GRS_TOKEN }}
 
