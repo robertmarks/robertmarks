@@ -21,8 +21,13 @@ Technical Architect who designs, builds, and operates durable Azure platforms th
 ![](./overview.svg#gh-dark-mode-only)
 ![](./overview.svg#gh-light-mode-only)
 ![](./profile/top-langs.svg)
-[![Rob's GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=robertmarks&area=true&theme=github-dark#gh-dark-mode-only)](https://github.com/ashutosh00710/github-readme-activity-graph)
-[![Rob's GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=robertmarks&area=true&theme=github-light&line=1F6FEB&point=58A6FF&area_color=1F6FEB#gh-light-mode-only)](https://github.com/ashutosh00710/github-readme-activity-graph)
+<a href="https://github.com/ashutosh00710/github-readme-activity-graph">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=robertmarks&area=true&theme=github-dark">
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=robertmarks&area=true&theme=github-light&line=1F6FEB&point=58A6FF&area_color=1F6FEB">
+    <img alt="Rob's GitHub Activity Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=robertmarks&area=true&theme=github-light&line=1F6FEB&point=58A6FF&area_color=1F6FEB">
+  </picture>
+</a>
 
 ## Working Together
 
