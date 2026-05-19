@@ -41,11 +41,19 @@ jobs:
           SILENT: "true"
           MAX_RETRIES: "5"
 
-      - name: Strip baked border from overview.svg
+      - name: Normalize overview.svg (transparent background, no border)
         run: |
-          # jstrieb/github-stats compiles the card border into the binary's
-          # template (no config flag), so remove it post-generation.
-          sed -i 's/stroke: rgb(225, 228, 232);/stroke: none;/' overview.svg
+          # jstrieb/github-stats bakes a white card + border into the binary's
+          # template (no config flag), so normalize it post-generation:
+          #  - drop the border stroke
+          #  - make the card background transparent in light and dark
+          # The SVG keeps its built-in :target color sets, so the README's
+          # <picture> switch still drives correct text colors per theme.
+          sed -i \
+            -e 's/stroke: rgb(225, 228, 232);/stroke: none;/' \
+            -e 's/fill: white;/fill: transparent;/' \
+            -e 's/fill: #0d1117;/fill: transparent;/' \
+            overview.svg
 
       - name: Generate LOC stats card SVG
         uses: readme-tools/github-readme-stats-action@v1
