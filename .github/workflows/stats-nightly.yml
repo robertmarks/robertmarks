@@ -44,7 +44,10 @@ jobs:
           git config --global user.name "Robert Marks"
           git config --global user.email "36484284+robertmarks@users.noreply.github.com"
 
-      - name: Generate stats images
+      # Detailed card (jstrieb style): all-time contributions, lines-of-code,
+      # views, per-repo stars/forks — written to its own file so it lives
+      # alongside the github-readme-stats card below.
+      - name: Generate detailed stats card
         run: |
           ./.github-stats-src/zig-out/bin/github-stats
         env:
@@ -54,8 +57,10 @@ jobs:
           EXCLUDE_PRIVATE: "false"
           SILENT: "false"
           MAX_RETRIES: "5"
+          OVERVIEW_OUTPUT_FILE: overview-detailed.svg
+          LANGUAGES_OUTPUT_FILE: /tmp/languages-unused.svg
 
-      - name: Normalize overview.svg (transparent background, no border)
+      - name: Normalize overview-detailed.svg (transparent background, no border)
         run: |
           # jstrieb/github-stats bakes a white card + border into the binary's
           # template (no config flag), so normalize it post-generation:
@@ -67,7 +72,17 @@ jobs:
             -e 's/stroke: rgb(225, 228, 232);/stroke: none;/' \
             -e 's/fill: white;/fill: transparent;/' \
             -e 's/fill: #0d1117;/fill: transparent;/' \
-            overview.svg
+            overview-detailed.svg
+
+      # Overview card from github-readme-stats — the theme-transparent summary
+      # that currently lives on main. Kept so both cards refresh nightly.
+      - name: Generate overview stats card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: stats
+          options: username=robertmarks&theme=transparent&hide_border=true&show_icons=true&count_private=true&include_all_commits=false&hide_rank=true&hide=stars,contribs&show=prs_merged,prs_merged_percentage
+          path: overview.svg
+          token: ${{ secrets.GRS_TOKEN }}
 
       - name: Generate top languages card
         uses: readme-tools/github-readme-stats-action@v1
@@ -79,7 +94,7 @@ jobs:
 
       - name: Commit generated files
         run: |
-          git add overview.svg profile/top-langs.svg
+          git add overview.svg overview-detailed.svg profile/top-langs.svg
           git commit -m "chore: refresh profile stats" || exit 0
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
