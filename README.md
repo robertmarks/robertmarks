@@ -21,7 +21,7 @@ Technical Architect who designs, builds, and operates durable Azure platforms th
 
 <p>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./overview.svg#gh-dark-mode-only">
+    <source media="(prefers-color-scheme: dark)" srcset="./overview-dark.svg">
     <img src="./overview.svg" height="200" alt="Rob's GitHub Statistics" />
   </picture>
   <img src="./profile/top-langs.svg" height="200" alt="Most Used Languages" />
