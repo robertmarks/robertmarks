@@ -34,7 +34,7 @@ jobs:
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: stats
-          options: username=robertmarks&hide_border=true&show_icons=true&count_private=false&include_all_commits=false&bg_color=00000000&title_color=1F6FEB&text_color=1F2328&icon_color=1F6FEB
+          options: username=robertmarks&hide_border=true&show_icons=true&count_private=false&include_all_commits=false&hide_rank=true&hide=stars,contribs&bg_color=00000000&title_color=1F6FEB&text_color=1F2328&icon_color=1F6FEB
           path: overview.svg
           token: ${{ secrets.GRS_TOKEN }}
 
@@ -42,7 +42,7 @@ jobs:
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: stats
-          options: username=robertmarks&hide_border=true&show_icons=true&count_private=false&include_all_commits=false&bg_color=00000000&title_color=58A6FF&text_color=C9D1D9&icon_color=58A6FF
+          options: username=robertmarks&hide_border=true&show_icons=true&count_private=false&include_all_commits=false&hide_rank=true&hide=stars,contribs&bg_color=00000000&title_color=58A6FF&text_color=C9D1D9&icon_color=58A6FF
           path: overview-dark.svg
           token: ${{ secrets.GRS_TOKEN }}
 
