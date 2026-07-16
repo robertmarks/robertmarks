@@ -20,7 +20,10 @@ Technical Architect who designs, builds, and operates durable Azure platforms th
 ## Stats
 
 <p>
-  <img src="./overview.svg" height="200" alt="Rob's GitHub Statistics" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./overview.svg#gh-dark-mode-only">
+    <img src="./overview.svg" height="200" alt="Rob's GitHub Statistics" />
+  </picture>
   <img src="./profile/top-langs.svg" height="200" alt="Most Used Languages" />
 </p>
 <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
