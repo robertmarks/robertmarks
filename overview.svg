@@ -8,8 +8,8 @@
         role="img"
         aria-labelledby="descId"
       >
-        <title id="titleId">Rob Marks' GitHub Stats, Rank: B</title>
-        <desc id="descId">Total Commits  (last year) : 1109, Total PRs: 157, Total PRs Merged: 139, Merged PRs Percentage: 88.54, Total Issues: 6</desc>
+        <title id="titleId">Rob Marks' GitHub Stats, Rank: B-</title>
+        <desc id="descId">Total Commits  (last year) : 1110, Total PRs: 58, Total PRs Merged: 51, Merged PRs Percentage: 87.93, Total Issues: 6</desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -73,7 +73,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 141.03673588528017;
+        stroke-dashoffset: 162.02178097842514;
       }
     }
   
@@ -166,7 +166,7 @@
         x="219.01"
         y="12.5"
         data-testid="prs"
-      >157</text>
+      >58</text>
     </g>
   </g><g transform="translate(0, 50)">
     <g class="stagger" style="animation-delay: 750ms" transform="translate(25, 0)">
@@ -181,7 +181,7 @@
         x="219.01"
         y="12.5"
         data-testid="prs_merged"
-      >139</text>
+      >51</text>
     </g>
   </g><g transform="translate(0, 75)">
     <g class="stagger" style="animation-delay: 900ms" transform="translate(25, 0)">
@@ -196,7 +196,7 @@
         x="219.01"
         y="12.5"
         data-testid="prs_merged_percentage"
-      >88.54 %</text>
+      >87.93 %</text>
     </g>
   </g><g transform="translate(0, 100)">
     <g class="stagger" style="animation-delay: 1050ms" transform="translate(25, 0)">
