@@ -9,7 +9,7 @@
         aria-labelledby="descId"
       >
         <title id="titleId">Rob Marks' GitHub Stats, Rank: B-</title>
-        <desc id="descId">Total Commits  (last year) : 1111, Total PRs: 58, Total PRs Merged: 51, Merged PRs Percentage: 87.93, Total Issues: 6</desc>
+        <desc id="descId">Total Commits  (last year) : 1112, Total PRs: 58, Total PRs Merged: 51, Merged PRs Percentage: 87.93, Total Issues: 6</desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -73,7 +73,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 162.01643780881895;
+        stroke-dashoffset: 162.01110943310644;
       }
     }
   
